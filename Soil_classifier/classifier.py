@@ -1,9 +1,20 @@
 import streamlit as st
 import pickle
 import pandas as pd
+import os
+
+# Check if the pickle file exists
+pickle_file_path = "soil_data_processed.pkl"
+if not os.path.exists(pickle_file_path):
+    st.error("Error: The pickle file 'soil_data_processed.pkl' is missing. Please upload the file below.")
+    uploaded_file = st.file_uploader("Upload the pickle file", type=["pkl"])
+    if uploaded_file is not None:
+        with open(pickle_file_path, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+        st.success("File uploaded successfully! Please restart the app.")
+    st.stop()
 
 # Load the processed dataset
-pickle_file_path = "soil_data_processed.pkl"
 with open(pickle_file_path, "rb") as file:
     classified_data = pickle.load(file)
 
