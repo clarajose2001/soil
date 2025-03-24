@@ -49,21 +49,21 @@ def classify_soil_levels(value, low, high, excess, feature):
         else:
             return "Moderate"
 
-def suggest_crops(classification_results):
+#def suggest_crops(classification_results):
     # Define crop recommendations based on soil nutrient status
-    crop_recommendations = {
-        "Deficient": ["Legumes", "Barley", "Peas", "Millets", "Oats"],
-        "Moderate": ["Rice", "Wheat", "Corn", "Soybean", "Groundnut"],
-        "Sufficient": ["Sugarcane", "Cotton", "Banana", "Sunflower", "Tobacco"],
-        "Excess": ["Water-resistant crops", "Jute", "Papaya", "Sesame", "Mustard"]
-    }
+   # crop_recommendations = {
+       # "Deficient": ["Legumes", "Barley", "Peas", "Millets", "Oats"],
+       # "Moderate": ["Rice", "Wheat", "Corn", "Soybean", "Groundnut"],
+        #"Sufficient": ["Sugarcane", "Cotton", "Banana", "Sunflower", "Tobacco"],
+        #"Excess": ["Water-resistant crops", "Jute", "Papaya", "Sesame", "Mustard"]
+   # }
     
     # Count classification occurrences
-    status_counts = {status: list(classification_results.values()).count(status) for status in ["Deficient", "Moderate", "Sufficient", "Excess"]}
+   # status_counts = {status: list(classification_results.values()).count(status) for status in ["Deficient", "Moderate", "Sufficient", "Excess"]}
     
     # Determine the dominant soil classification
-    dominant_status = max(status_counts, key=status_counts.get)
-    return crop_recommendations.get(dominant_status, [])
+    #dominant_status = max(status_counts, key=status_counts.get)
+   # return crop_recommendations.get(dominant_status, [])
 
 st.title("Soil Classification App")
 
@@ -83,6 +83,6 @@ if st.button("Classify Soil"):
     st.json(result)
     
     # Suggest crops based on classification
-    suggested_crops = suggest_crops(result)
-    st.write("### Recommended Crops:")
-    st.write(", ".join(suggested_crops) if suggested_crops else "No specific recommendation.")
+   # suggested_crops = suggest_crops(result)
+   # st.write("### Recommended Crops:")
+    # st.write(", ".join(suggested_crops) if suggested_crops else "No specific recommendation.")
